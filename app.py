@@ -2,7 +2,7 @@ from flask import *
 import cv2
 import base64
 import numpy as np
-from rembg import remove
+# from rembg import remove
 
 
 app = Flask(__name__)
@@ -21,8 +21,8 @@ def success():
             decodedInput = base64.b64decode(image_string)
             inputNpData = np.frombuffer(decodedInput, np.uint8)
             input = cv2.imdecode(inputNpData, cv2.IMREAD_UNCHANGED)
-            output = remove(input)
-            # output = input
+            # output = remove(input)
+            output = input
             retval, buffer = cv2.imencode('.png', output)
             outputImage = base64.b64encode(buffer)
             return render_template("success.html", content = outputImage.decode('utf-8'))

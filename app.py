@@ -2,7 +2,7 @@ from flask import *
 import cv2
 import base64
 import numpy as np
-# from rembg import remove
+from rembg import remove
 
 
 app = Flask(__name__)
